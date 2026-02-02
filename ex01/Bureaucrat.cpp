@@ -6,7 +6,7 @@
 /*   By: fernando <fdurban-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 19:57:11 by fernando          #+#    #+#             */
-/*   Updated: 2025/12/26 22:08:17 by fernando         ###   ########.fr       */
+/*   Updated: 2026/02/02 14:06:07 by fdurban-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void	Bureaucrat::decrementGrade()
 void	Bureaucrat::incrementGrade()
 {
 	this->setGrade(this->grade - 1);
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	form.beSigned(*this);
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)

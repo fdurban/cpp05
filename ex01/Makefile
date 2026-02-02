@@ -1,4 +1,4 @@
-NAME = mommywhenigrowupiwanttobeabureaucrat
+NAME = formupmaggots
 
 CPP = c++
 
@@ -6,7 +6,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -rf
 
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

@@ -6,11 +6,15 @@
 /*   By: fernando <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 16:14:55 by fernando          #+#    #+#             */
-/*   Updated: 2026/01/30 16:10:31 by fdurban-         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:09:51 by fdurban-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#ifndef FORM_HPP
+#define FORM_HPP
+#include "./Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -21,26 +25,27 @@ class Form
 		const int grade_required_to_exec;
 	public:
 		Form();
-		Form(const std::string name, bool formSigned, int grade);
+		Form(const std::string name, int grade_required_to_sign, int grade_required_to_exec);
 		Form(const Form& src);
-		Form&	operator=(const Bureaucrat &other);
+		Form&	operator=(const Form &other);
 		~Form();
-		class GradeTooHighException(): public std::exception
+		class GradeTooHighException: public std::exception
 		{
 			public:
 				const char* what() const throw();
 		};
 
-		class GradeTooLowException(): public std::exception
+		class GradeTooLowException: public std::exception
 		{
 			public:
 				const char* what() const throw();
 		};
 		const std::string getName() const;
 		int	getGrade() const ;
-		int	getGradeSign();
-		int	getGradeExec();
+		int	getSignedGrade() const;
+		int	getExecGrade() const;
 		void	setGrade(int grade);
-		void	beSigned(Bureaucrat& bureaucrat)
+		void	beSigned(Bureaucrat& bureaucrat);
 };
-	std::ostream&	operator<<(std::ostream& os, const Bureaucrat&b, const Form &f);
+	std::ostream&	operator<<(std::ostream& os, const Form &f);
+#endif

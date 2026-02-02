@@ -6,44 +6,35 @@
 /*   By: fernando <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:05:43 by fernando          #+#    #+#             */
-/*   Updated: 2025/12/29 16:10:38 by fernando         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:12:36 by fdurban-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
 	try
 	{
-
 		Bureaucrat b1("Fer", 150);
-		b1.decrementGrade();
-		std::cout<<b1<<std::endl;
-		std::cout<<"This function should not execute. First exception"<<std::endl;
-	}
-	catch (const Bureaucrat::GradeTooHighException& error)
-	{
-		std::cerr<<"Caught exception: "<<error.what()<<std::endl;
-	}
-	catch (const Bureaucrat::GradeTooLowException& error)
-	{
-		std::cerr<<"Caught exception: "<<error.what()<<std::endl;
-	}
-	try
-	{
-
 		Bureaucrat b2("Cris", 1);
-		b2.incrementGrade();
+		Bureaucrat b3("Mati", 75);
+
+		std::cout<<b1<<std::endl;
 		std::cout<<b2<<std::endl;
-		std::cout<<"This function should not execute. First exception"<<std::endl;
+		std::cout<<b3<<std::endl;
+
+		Form	form1("Form1", 149, 149);
+		Form	form2("Form2", 149, 149);
+		Form	form3("Form3", 149, 149);
+
+		b1.signForm(form1);
+		b2.signForm(form2);
+		b3.signForm(form3);
 	}
-	catch (const Bureaucrat::GradeTooHighException& error)
+	catch (const std::exception &e)
 	{
-		std::cerr<<"Caught exception: "<<error.what()<<std::endl;
-	}
-	catch (const Bureaucrat::GradeTooLowException& error)
-	{
-		std::cerr<<"Caught exception: "<<error.what()<<std::endl;
+		std::cerr<<"Exception caught: "<<e.what()<<std::endl;
 	}
 }

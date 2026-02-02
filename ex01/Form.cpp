@@ -1,18 +1,18 @@
 #include "Form.hpp"
 
-Form::Form()
+Form::Form(): name("default_form_name"), formSigned(false), grade_required_to_sign(150), grade_required_to_exec(150)
 {}
 
-Form::Form(const std::string name, bool formSigned, int grade): name(name), formSigned(false), grade_required_to_sign(150), grade_required_to_exec(150)
+Form::Form(const std::string name, int grade_required_to_sign, int grade_required_to_exec): name(name), formSigned(false), grade_required_to_sign(grade_required_to_sign), grade_required_to_exec(grade_required_to_exec)
 {
-	int	gradesigned = getGradeSigned();
-	int	grade_exec = getGradeExec();
+	int	gradesigned = getSignedGrade();
+	int	grade_exec = getExecGrade();
 
-	if(gradeSigned > 150 || grade_exec > 150)
+	if(gradesigned > 150 || grade_exec > 150)
 	{
 		throw	(Form::GradeTooHighException());
 	}
-	else if(gradeSigned < 1 || grade_exec < 1 )
+	else if(gradesigned < 1 || grade_exec < 1 )
 	{
 		throw (Form::GradeTooLowException());
 	}
@@ -23,9 +23,53 @@ Form::Form(const Form& src): name(src.name), formSigned(src.formSigned), grade_r
 	*this = src;
 }
 
-Form&	Form::operator=(const	Form% other)
+Form&	Form::operator=(const	Form& other)
 {
-	if(this == &src)
+	if(this == &other)
 		return *this;
 	return *this;
 }
+
+Form::~Form(){}
+
+void	Form::beSigned(Bureaucrat  &Bureaucrat)
+{
+	if (this->getSignedGrade() >= Bureaucrat.getGrade())
+	{
+		if(this->formSigned == false)
+		{
+			this->formSigned = true;
+			std::cout<<"Form signed successfully!!!"<<std::endl;
+		}
+		else
+		{
+			std::cout<<"Form couldn´t be signed because form is already signed"<<std::endl;
+		}
+	}
+	else
+	{
+		std::cout<<"Sorry. Couldn't sign grade. Grade too low"<<std::endl;
+		throw	Form::GradeTooLowException();
+	}
+}
+
+int	Form::getSignedGrade()  const
+{
+	return this->grade_required_to_sign;
+}
+
+int	Form::getExecGrade() const
+{
+	return this->grade_required_to_exec;
+}
+
+const	char* Form::GradeTooLowException::what() const throw()
+{
+	return ("Grade too high");
+}
+
+const	char* Form::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high");
+}
+
