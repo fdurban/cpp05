@@ -48,7 +48,7 @@ void	Form::beSigned(Bureaucrat  &Bureaucrat)
 	}
 	else
 	{
-		std::cout<<"Sorry. Couldn't sign grade. Grade too low"<<std::endl;
+		std::cout<<"Sorry. Couldn't sign grade of Bureaucrat: "<<Bureaucrat.getName()<<std::endl;
 		throw	Form::GradeTooLowException();
 	}
 }
