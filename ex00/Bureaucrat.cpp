@@ -6,7 +6,7 @@
 /*   By: fernando <fdurban-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 19:57:11 by fernando          #+#    #+#             */
-/*   Updated: 2025/12/26 22:08:17 by fernando         ###   ########.fr       */
+/*   Updated: 2026/02/18 13:20:01 by fdurban-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ Bureaucrat::~Bureaucrat()
 void	Bureaucrat::setGrade(int grade)
 {
 	if(grade < 1)
-		throw Bureaucrat::GradeTooLowException();
-	else if (grade > 150)
 		throw Bureaucrat::GradeTooHighException();
+	else if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
 	else
 		this->grade = grade;
 }
