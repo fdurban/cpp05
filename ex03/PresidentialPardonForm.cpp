@@ -3,13 +3,13 @@
 #include <ctime>
 
 
-PresidentialPardonForm::PresidentialPardonForm(): AForm("RobotomyCreationForm", 25, 5), target("default_target")
+PresidentialPardonForm::PresidentialPardonForm(): AForm("PresidentialPardonForm", 25, 5), target("default_target")
 {}
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("RobotomyCreationForm", 72, 45), target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("PresidentialPardonForm", 25, 5), target(target)
 {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src): AForm(src), target(src.target)
 {
 	*this = src;
 }
@@ -28,7 +28,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 void	PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
-	if(executor.getGrade() >= this->getSignedGrade())
+	if(executor.getGrade() >= this->getExecGrade())
 	{
 		throw	Bureaucrat::GradeTooLowException();
 	}

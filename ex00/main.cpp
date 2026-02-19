@@ -6,44 +6,72 @@
 /*   By: fernando <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:05:43 by fernando          #+#    #+#             */
-/*   Updated: 2026/02/18 13:26:50 by fdurban-         ###   ########.fr       */
+/*   Updated: 2026/02/19 14:45:50 by fdurban-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-int main()
+int main(void)
 {
-	try
-	{
+  std::cout << "=== Test 1: Valid bureaucrat ===" << std::endl;
+  try
+  {
+    Bureaucrat bob("Bob", 75);
+    std::cout << bob << std::endl;
+  }
+  catch (std::exception &e)
+  {
+    std::cerr << "Exception caught: " << e.what() << std::endl;
+  }
 
-		Bureaucrat b1("Fer", 2);
-		b1.decrementGrade();
-		std::cout<<b1<<std::endl;
-		std::cout<<"This function should not execute. First exception"<<std::endl;
-	}
-	catch (const Bureaucrat::GradeTooHighException& error)
-	{
-		std::cerr<<"Caught exception: "<<error.what()<<std::endl;
-	}
-	catch (const Bureaucrat::GradeTooLowException& error)
-	{
-		std::cerr<<"Caught exception: "<<error.what()<<std::endl;
-	}
-	try
-	{
+  std::cout << "\n=== Test 2: Decrement until exception ===" << std::endl;
+  try
+  {
+    Bureaucrat intern("Intern", 149);
+    std::cout << intern << std::endl;
+    intern.decrementGrade();
+    std::cout << intern << std::endl;
+    intern.decrementGrade(); // Should throw
+  }
+  catch (std::exception &e)
+  {
+    std::cerr << "Exception caught: " << e.what() << std::endl;
+  }
 
-		Bureaucrat b2("Cris", 2);
-		b2.incrementGrade();
-		std::cout<<b2<<std::endl;
-		std::cout<<"This function should not execute. First exception"<<std::endl;
-	}
-	catch (const Bureaucrat::GradeTooHighException& error)
-	{
-		std::cerr<<"Caught exception: "<<error.what()<<std::endl;
-	}
-	catch (const Bureaucrat::GradeTooLowException& error)
-	{
-		std::cerr<<"Caught exception: "<<error.what()<<std::endl;
-	}
+  std::cout << "\n=== Test 3: Increment until exception ===" << std::endl;
+  try
+  {
+    Bureaucrat ceo("CEO", 2);
+    std::cout << ceo << std::endl;
+    ceo.incrementGrade();
+    std::cout << ceo << std::endl;
+    ceo.incrementGrade(); // Should throw
+  }
+  catch (std::exception &e)
+  {
+    std::cerr << "Exception caught: " << e.what() << std::endl;
+  }
+
+  std::cout << "\n=== Test 4: Grade too high in constructor ===" << std::endl;
+  try
+  {
+    Bureaucrat invalid("Invalid", 0);
+  }
+  catch (std::exception &e)
+  {
+    std::cerr << "Exception caught: " << e.what() << std::endl;
+  }
+
+  std::cout << "\n=== Test 5: Grade too low in constructor ===" << std::endl;
+  try
+  {
+    Bureaucrat invalid("Invalid", 151);
+  }
+  catch (std::exception &e)
+  {
+    std::cerr << "Exception caught: " << e.what() << std::endl;
+  }
+
+  return 0;
 }

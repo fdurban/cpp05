@@ -7,7 +7,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 1
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("ShrubberyCreationForm", 145, 137), target(target)
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src): AForm(src), target(src.target)
 {
 	*this = src;
 }
@@ -26,7 +26,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
-	if(executor.getGrade() >= this->getSignedGrade())
+	if(executor.getGrade() >= this->getExecGrade())
 	{
 		throw	Bureaucrat::GradeTooLowException();
 	}
@@ -36,7 +36,6 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 	}
 	else
 	{
-		std::cout<<"ENTRA"<<std::endl;
 		std::ofstream outfile((this->target+"_shrubbery").c_str());
 		if(!outfile.is_open())
 		{

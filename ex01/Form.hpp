@@ -6,7 +6,7 @@
 /*   By: fernando <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 16:14:55 by fernando          #+#    #+#             */
-/*   Updated: 2026/02/02 17:09:51 by fdurban-         ###   ########.fr       */
+/*   Updated: 2026/02/19 15:14:15 by fdurban-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ class Form
 		int	getExecGrade() const;
 		void	setGrade(int grade);
 		void	beSigned(Bureaucrat& bureaucrat);
+		bool	getIfSigned() const;
 };
 	std::ostream&	operator<<(std::ostream& os, const Form &f);
 #endif

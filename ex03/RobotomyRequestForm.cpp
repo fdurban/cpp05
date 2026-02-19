@@ -9,7 +9,7 @@ RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyCreationForm", 72, 45
 RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyCreationForm", 72, 45), target(target)
 {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src) : AForm(src), target(src.target)
 {
 	*this = src;
 }
@@ -28,7 +28,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
-	if(executor.getGrade() >= this->getSignedGrade())
+	if(executor.getGrade() >= this->getExecGrade())
 	{
 		throw	Bureaucrat::GradeTooLowException();
 	}

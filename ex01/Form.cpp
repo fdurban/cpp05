@@ -63,9 +63,18 @@ int	Form::getExecGrade() const
 	return this->grade_required_to_exec;
 }
 
+const std::string Form::getName() const
+{
+	return this->name;
+}
+
+bool	Form::getIfSigned() const
+{
+	return this->formSigned;
+}
 const	char* Form::GradeTooLowException::what() const throw()
 {
-	return ("Grade too high");
+	return ("Grade too low");
 }
 
 const	char* Form::GradeTooHighException::what() const throw()
@@ -73,3 +82,10 @@ const	char* Form::GradeTooHighException::what() const throw()
 	return ("Grade too high");
 }
 
+std::ostream&	operator<<(std::ostream& os, const Form& other)
+{
+	os<<"Form: "<<other.getName()<<" is signed: "<<other.getIfSigned()<<
+	" can be signed with grade: "<<other.getSignedGrade()<<
+	" and can be executed with grade: "<<other.getExecGrade();
+	return os;
+}

@@ -6,40 +6,48 @@
 /*   By: fernando <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:05:43 by fernando          #+#    #+#             */
-/*   Updated: 2026/02/04 14:02:00 by fdurban-         ###   ########.fr       */
+/*   Updated: 2026/02/19 14:38:12 by fdurban-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
-	try
+	Intern intern;
+
+	AForm	*form1;
+	AForm	*form2;
+	AForm	*form3;
+
+	form1 = intern.makeForm("ShrubberyCreationForm", "target");
+	if (form1)
 	{
-		Bureaucrat	bob("Bob", 137);
-		ShrubberyCreationForm	shrubbery("home");
-		std::cout<<bob<<std::endl;
-		bob.signForm(shrubbery);
-		bob.executeForm(shrubbery);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr<<"Exception caught: "<<e.what()<<std::endl;
+		std::cout<<"Form created: "<<form1->getName()<<std::endl;
+		delete form1;
 	}
 
-	try
+
+	form2 = intern.makeForm("RobotomyRequestForm", "target");
+	if (form2)
 	{
-		Bureaucrat	anna("Anna", 21);
-		RobotomyRequestForm	robotomy("home");
-		std::cout<<anna<<std::endl;
-		anna.signForm(robotomy);
-		anna.executeForm(robotomy);
+		std::cout<<"Form created: "<<form2->getName()<<std::endl;
+		delete form2;
 	}
-	catch (const std::exception &e)
+
+
+	form3 = intern.makeForm("PresidentialPardonForm", "target");
+	if (form3)
 	{
-		std::cerr<<"Exception caught: "<<e.what()<<std::endl;
+		std::cout<<"Form created: "<<form3->getName()<<std::endl;
+		delete form3;
+	}
+
+	ivalidForm = intern.makeForm("vacation request", "target");
+	if (ivalidForm)
+	{
+		std::cout<<"Form created: "<<form3->getName()<<std::endl;
+		delete form3;
 	}
 }
