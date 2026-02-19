@@ -10,11 +10,11 @@ AForm::AForm(const std::string name, int grade_required_to_sign, int grade_requi
 
 	if(gradesigned > 150 || grade_exec > 150)
 	{
-		throw	(AForm::GradeTooHighException());
+		throw	(AForm::GradeTooLowException());
 	}
 	else if(gradesigned < 1 || grade_exec < 1 )
 	{
-		throw (AForm::GradeTooLowException());
+		throw (AForm::GradeTooHighException());
 	}
 }
 
@@ -65,7 +65,7 @@ int	AForm::getExecGrade() const
 
 const	char* AForm::GradeTooLowException::what() const throw()
 {
-	return ("Grade too high");
+	return ("Grade too low");
 }
 
 const	char* AForm::GradeTooHighException::what() const throw()
@@ -81,4 +81,17 @@ const	char* AForm::FormNotSignedException::what() const throw()
 bool	AForm::getIfSigned() const
 {
 	return formSigned;
+}
+
+const std::string	AForm::getName() const
+{
+	return this->name;
+}
+
+std::ostream &operator<<(std::ostream &os, const AForm &form)
+{
+	os << "Form " << form.getName() << ", signed: " << (form.getIfSigned() ? "yes" : "no")
+	<< ", sign grade: " << form.getSignedGrade()
+	<< ", exec grade: " << form.getExecGrade();
+	return os;
 }

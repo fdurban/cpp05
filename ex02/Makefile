@@ -1,4 +1,4 @@
-NAME = formupmaggots
+NAME = noyouneedform28Bnot28C
 
 CPP = c++
 
@@ -6,7 +6,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -rf
 
-SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

@@ -6,7 +6,7 @@
 /*   By: fernando <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:05:43 by fernando          #+#    #+#             */
-/*   Updated: 2026/02/03 11:07:56 by fdurban-         ###   ########.fr       */
+/*   Updated: 2026/02/19 00:28:45 by fernando         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int main()
 {
 	try
 	{
-		Bureaucrat b1("Fer", 148);
-		Bureaucrat b2("Cris", 1);
-		Bureaucrat b3("Mati", 75);
+		Bureaucrat b1("Fer", 130);
+		Bureaucrat b2("Cris", 150);
+		Bureaucrat b3("Mati", 130);
 
 		std::cout<<b1<<std::endl;
 		std::cout<<b2<<std::endl;
